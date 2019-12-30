@@ -17,8 +17,8 @@ public class DataValidator {
     }
 
     public static void validateSectorAllocation(List<Double> allocationList) {
-        Double totolAllocation = allocationList.stream().mapToDouble(Double::doubleValue).sum();
-        if (!totolAllocation.equals(TARGET_ALL_ALLOCATION)) {
+        Double totalAllocation = allocationList.stream().mapToDouble(Double::doubleValue).sum();
+        if (!totalAllocation.equals(TARGET_ALL_ALLOCATION)) {
             throw new RuntimeException("Sector allocation is incomplete, please correct!");
         }
     }

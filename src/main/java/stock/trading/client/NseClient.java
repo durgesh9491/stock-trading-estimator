@@ -1,6 +1,5 @@
 package stock.trading.client;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.CookieSpecs;
@@ -13,7 +12,6 @@ import stock.trading.constant.AppConstant;
 
 import java.io.IOException;
 
-@Slf4j
 public class NseClient {
     private HttpClient client = HttpClientBuilder.
             create().
@@ -27,12 +25,12 @@ public class NseClient {
             HttpResponse response = client.execute(httpGet);
             String responseBody = EntityUtils.toString(response.getEntity());
             return getStockPrice(responseBody);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            System.out.println(String.format("Unable to get latest stock price for stock : %s", stock));
         } finally {
             httpGet.releaseConnection();
         }
-        return (1L << 63);
+        return Integer.MAX_VALUE;
     }
 
     private double getStockPrice(String responseBody) {

@@ -8,42 +8,57 @@ import stock.trading.bean.StockDetail;
 import stock.trading.client.NseClient;
 import stock.trading.constant.FilePath;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Singleton
 class TradingEstimateService {
 
-    private NseClient nseClient = new NseClient();
+    @Inject
+    private NseClient nseClient;
 
     private BufferedReader reader;
 
-    double calculateTradingAmount(Map<Integer, Set<StockDetail>> sectorToStocksMap) {
+    double calculateTradingAmount(Set<SectorDetail> targetSectorDetails, Map<Integer, Set<StockDetail>> sectorToStocksMap) {
+        System.out.println("\n\n-------------- Sector wise target trading amount --------------\n");
+
+        Map<Integer, SectorDetail> sectorDetailMap = getSectorIdToObjMap(targetSectorDetails);
         double totalAmount = sectorToStocksMap.entrySet().stream().map(entry -> {
             double sectorWiseAmount = entry.getValue().stream().map(stock -> stock.getPrice() * stock.getUnits()).mapToDouble(Double::doubleValue).sum();
-            System.out.println(String.format("SectorId : %s target trading amount : %.2f", entry.getKey(), sectorWiseAmount));
+            System.out.println(String.format("Sector : %s | Target amount : %.2f", sectorDetailMap.get(entry.getKey()).getName(), sectorWiseAmount));
             return sectorWiseAmount;
         }).mapToDouble(Double::doubleValue).sum();
 
-        System.out.println(String.format("Total trading amount : %.2f", totalAmount));
+        System.out.println(String.format("\n\nTotal trading amount : %.2f", totalAmount));
         return totalAmount;
     }
 
     Map<Integer, Set<StockDetail>> allocateStocks(Set<SectorDetail> targetSectorDetails, Set<StockDetail> targetStockDetails, double totalCapital) {
         Map<Integer, SectorDetail> idToSectorDetailMap = getSectorIdToObjMap(targetSectorDetails);
+        List<Integer> prioritisedSectorIds = getPrioritisedSectorIds(idToSectorDetailMap);
         Map<Integer, Set<StockDetail>> sectorIdToStocksMap = getSectorIdToStocksMap(targetStockDetails);
 
-        sectorIdToStocksMap.forEach((sectorId, stocks) -> {
-            SectorDetail sectorDetail = Optional.
-                    ofNullable(idToSectorDetailMap.get(sectorId)).
-                    orElseThrow(() -> new RuntimeException(String.format("SectorId : %d is not applicable!", sectorId)));
+        System.out.println("\n\n-------------- Stock wise target trading amount --------------");
 
-            System.out.println();
+        prioritisedSectorIds.forEach(sectorId -> {
+            SectorDetail sectorDetail = idToSectorDetailMap.get(sectorId);
             double sectorWeight = sectorDetail.getWeight();
-            stocks.forEach(stock -> {
+            Set<StockDetail> stockDetails = sectorIdToStocksMap.get(sectorId);
+            System.out.println();
+
+            if (Objects.isNull(stockDetails)) {
+                System.out.println(String.format("**** No target stocks found for sector : %s", sectorDetail.getName()));
+                return;
+            }
+
+            stockDetails.forEach(stock -> {
                 double stockWeight = stock.getWeight();
                 int units = (int) ((totalCapital * sectorWeight * stockWeight) / stock.getPrice());
                 stock.setUnits(units);
@@ -53,7 +68,7 @@ class TradingEstimateService {
         return sectorIdToStocksMap;
     }
 
-    Set<SectorDetail> getTargetSectorDetails() {
+    Set<SectorDetail> getTargetSectorDetails() throws IOException {
         Set<SectorDetail> sectorDetails = Sets.newHashSet();
         String targetSector = "";
         try (FileReader fileReader = new FileReader(FilePath.nseTargetSectorsFile.getValue())) {
@@ -69,14 +84,14 @@ class TradingEstimateService {
                 targetSector = sectorInfo[1];
                 sectorDetails.add(buildSectorDetailObj(sectorInfo));
             }
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             System.out.println("Unable to complete the process for sector : " + targetSector);
-            ex.printStackTrace();
+            throw ex;
         }
         return sectorDetails;
     }
 
-    Set<StockDetail> getTargetStockDetails() {
+    Set<StockDetail> getTargetStockDetails() throws IOException {
         Set<StockDetail> stockDetails = Sets.newHashSet();
         String targetStock = "";
         try (FileReader fileReader = new FileReader(FilePath.nseTargetStocksFile.getValue())) {
@@ -90,15 +105,19 @@ class TradingEstimateService {
                 }
                 stockDetails.add(buildStockDetailObj(line.split(cvsSplitBy)));
             }
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             System.out.println("Unable to complete the process for stock : " + targetStock);
-            ex.printStackTrace();
+            throw ex;
         }
         return stockDetails;
     }
 
-    Set<StockDetail> getApplicableStockDetails(Set<StockDetail> stockDetails) {
-        return stockDetails.parallelStream().filter(StockDetail::isApplicable).collect(Collectors.toSet());
+    Set<StockDetail> getApplicableStockDetails(Set<SectorDetail> targetSectorDetails, Set<StockDetail> stockDetails) {
+        Map<Integer, SectorDetail> sectorDetailMap = getSectorIdToObjMap(targetSectorDetails);
+        return stockDetails.
+                parallelStream().
+                filter(stockDetail -> (stockDetail.isApplicable() & sectorDetailMap.containsKey(stockDetail.getSectorId()))).
+                collect(Collectors.toSet());
     }
 
     Set<SectorDetail> getApplicableSectorDetail(Set<SectorDetail> sectorDetails) {
@@ -119,7 +138,7 @@ class TradingEstimateService {
         targetStockDetails.parallelStream().forEach(stockDetail -> {
             stockDetail.setPrice(nseClient.getLatestStockPrice(stockDetail.getQueryName()));
         });
-        System.out.println(String.format("Time taken to get latest stock prices : %s seconds", (System.currentTimeMillis() - startTime) / TimeUnit.SECONDS.toMillis(1)));
+        System.out.println(String.format("\n\nTime taken to get latest stock prices : %s seconds", (System.currentTimeMillis() - startTime) / TimeUnit.SECONDS.toMillis(1)));
     }
 
     private StockDetail buildStockDetailObj(String[] stockInfo) {
@@ -162,5 +181,11 @@ class TradingEstimateService {
             sectorIdToStockMap.get(stockDetail.getSectorId()).add(stockDetail);
         });
         return sectorIdToStockMap;
+    }
+
+    private List<Integer> getPrioritisedSectorIds(Map<Integer, SectorDetail> idToSectorDetailMap) {
+        List<Integer> sectorIds = new ArrayList<>(idToSectorDetailMap.keySet());
+        sectorIds.sort((o1, o2) -> idToSectorDetailMap.get(o2).getWeight().compareTo(idToSectorDetailMap.get(o1).getWeight()));
+        return sectorIds;
     }
 }
