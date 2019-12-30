@@ -10,16 +10,16 @@ import stock.trading.constant.FilePath;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 class TradingEstimateService {
+
     private NseClient nseClient = new NseClient();
+
+    private BufferedReader reader;
 
     double calculateTradingAmount(Map<Integer, Set<StockDetail>> sectorToStocksMap) {
         double totalAmount = sectorToStocksMap.entrySet().stream().map(entry -> {
@@ -41,6 +41,7 @@ class TradingEstimateService {
                     ofNullable(idToSectorDetailMap.get(sectorId)).
                     orElseThrow(() -> new RuntimeException(String.format("SectorId : %d is not applicable!", sectorId)));
 
+            System.out.println();
             double sectorWeight = sectorDetail.getWeight();
             stocks.forEach(stock -> {
                 double stockWeight = stock.getWeight();
@@ -55,12 +56,12 @@ class TradingEstimateService {
     Set<SectorDetail> getTargetSectorDetails() {
         Set<SectorDetail> sectorDetails = Sets.newHashSet();
         String targetSector = "";
-        try {
-            BufferedReader sectorReader = new BufferedReader(new FileReader(FilePath.nseTargetSectorsFile.getValue()));
+        try (FileReader fileReader = new FileReader(FilePath.nseTargetSectorsFile.getValue())) {
+            reader = new BufferedReader(fileReader);
             String line = "";
             String cvsSplitBy = ",";
             int lineCounter = 0;
-            while ((line = sectorReader.readLine()) != null) {
+            while (Objects.nonNull(line = reader.readLine())) {
                 if (++lineCounter == 1) {
                     continue;
                 }
@@ -78,17 +79,16 @@ class TradingEstimateService {
     Set<StockDetail> getTargetStockDetails() {
         Set<StockDetail> stockDetails = Sets.newHashSet();
         String targetStock = "";
-        try {
-            BufferedReader stockReader = new BufferedReader(new FileReader(FilePath.nseTargetStocksFile.getValue()));
+        try (FileReader fileReader = new FileReader(FilePath.nseTargetStocksFile.getValue())) {
+            reader = new BufferedReader(fileReader);
             String line = "";
             String cvsSplitBy = ",";
             int lineCounter = 0;
-            while ((line = stockReader.readLine()) != null) {
+            while (Objects.nonNull(line = reader.readLine())) {
                 if (++lineCounter == 1) {
                     continue;
                 }
-                String[] stockInfo = line.split(cvsSplitBy);
-                stockDetails.add(buildStockDetailObj(stockInfo));
+                stockDetails.add(buildStockDetailObj(line.split(cvsSplitBy)));
             }
         } catch (Exception ex) {
             System.out.println("Unable to complete the process for stock : " + targetStock);
@@ -98,11 +98,11 @@ class TradingEstimateService {
     }
 
     Set<StockDetail> getApplicableStockDetails(Set<StockDetail> stockDetails) {
-        return stockDetails.stream().filter(StockDetail::isApplicable).collect(Collectors.toSet());
+        return stockDetails.parallelStream().filter(StockDetail::isApplicable).collect(Collectors.toSet());
     }
 
     Set<SectorDetail> getApplicableSectorDetail(Set<SectorDetail> sectorDetails) {
-        return sectorDetails.stream().filter(SectorDetail::isApplicable).collect(Collectors.toSet());
+        return sectorDetails.parallelStream().filter(SectorDetail::isApplicable).collect(Collectors.toSet());
     }
 
     Map<Integer, List<Double>> getSectorWiseStockAllocationMap(Set<StockDetail> stockDetails) {

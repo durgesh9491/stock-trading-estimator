@@ -1,4 +1,4 @@
-package stock.trading;
+package stock.trading.validation;
 
 import java.util.List;
 import java.util.Map;

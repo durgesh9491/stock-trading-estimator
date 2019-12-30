@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>r05</version>
+            <version>28.1-jre</version>
         </dependency>
 
         <dependency>
@@ -43,6 +43,12 @@
             <version>1.7.30</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
+        </dependency>
 
     </dependencies>
 
