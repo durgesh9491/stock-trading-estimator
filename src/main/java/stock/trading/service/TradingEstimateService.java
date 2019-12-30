@@ -61,8 +61,8 @@ class TradingEstimateService {
             stockDetails.forEach(stock -> {
                 double stockWeight = stock.getWeight();
                 int units = (int) ((totalCapital * sectorWeight * stockWeight) / stock.getPrice());
-                stock.setUnits(units);
-                System.out.println(String.format("Sector : %s | Stock : %s | Price : %s | Units : %s", sectorDetail.getName(), stock.getDisplayName(), stock.getPrice(), units));
+                stock.setUnits(stock.getUnits() + units);
+                System.out.println(String.format("Sector : %s | Stock : %s | Price : %s | Units : %s", sectorDetail.getName(), stock.getDisplayName(), stock.getPrice(), stock.getUnits()));
             });
         });
         return sectorIdToStocksMap;

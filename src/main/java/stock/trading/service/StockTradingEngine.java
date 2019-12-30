@@ -28,10 +28,19 @@ public class StockTradingEngine {
             DataValidator.validateSectorAllocation(targetSectorDetails.parallelStream().map(SectorDetail::getWeight).collect(Collectors.toList()));
 
             estimateService.fillLatestStockPrice(targetStockDetails);
-            Map<Integer, Set<StockDetail>> sectorToStocksMap = estimateService.allocateStocks(targetSectorDetails, targetStockDetails, totalCapital);
-            double totalTradingAmount = estimateService.calculateTradingAmount(allSectorDetails, sectorToStocksMap);
 
-            System.out.println(String.format("\n\nAmount left after trading adjustment : %s", Math.floor(totalCapital - totalTradingAmount)));
+            double prevCapital = -1, currentCapital = totalCapital;
+            int counter = 0;
+            while (currentCapital > 0 && prevCapital != currentCapital) {
+                System.out.println("Estimation iteration - :" + (++counter));
+                Map<Integer, Set<StockDetail>> sectorToStocksMap = estimateService.allocateStocks(targetSectorDetails, targetStockDetails, currentCapital);
+                double totalTradingAmount = estimateService.calculateTradingAmount(allSectorDetails, sectorToStocksMap);
+                double amountLeft = Math.floor(totalCapital - totalTradingAmount);
+
+                prevCapital = currentCapital;
+                currentCapital = amountLeft;
+                System.out.println(String.format("\n\nAmount left after trading adjustment : %s", amountLeft));
+            }
         } catch (IOException ex) {
             System.out.println(String.format("Expected error caught! : %s", ex));
         } catch (Exception ex) {
