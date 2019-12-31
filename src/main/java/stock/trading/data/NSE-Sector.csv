@@ -1,36 +1,36 @@
-Id,Sector                         ,Applicable,Weightage
-16,Leather Products               ,1         ,1
-18,Bearings                       ,1         ,1
-19,Industrial Equipments          ,1         ,1
-20,Tea and Coffee                 ,1         ,1
-24,Hotels                         ,1         ,1
-7 ,LPG or CNG                     ,1         ,1.5
-30,Telecommunications             ,1         ,1.5
-33,Media                          ,1         ,1.5
-3 ,Mining and Minerals            ,1         ,2
-5 ,Engineering/Design/Construction,1         ,2
-14,Plastic Products               ,1         ,2
-21,Sanitory ware                  ,1         ,2
-26,Auto Ancillaries               ,1         ,2
-32,Diversified                    ,1         ,2
-8 ,Steel                          ,1         ,2.5
-11,Pharmaceuticals                ,1         ,3
-15,Cement                         ,1         ,3
-22,Home appliance                 ,1         ,3
-25,General Infrastructure         ,1         ,3
-34,Automobile                     ,1         ,3
-4 ,Retailing                      ,1         ,4
-6 ,Pestcide or Chemicals          ,1         ,4
-10,Paints                         ,1         ,4
-35,Asset Management               ,1         ,4
-13,Consumer Good                  ,1         ,5
-23,Refineries and Marketing       ,1         ,5
-2 ,Software                       ,1         ,6
-28,NBFC                           ,1         ,8
-31,Insurance                      ,1         ,9
-1 ,Banks                          ,1         ,12
-9 ,Personal Care                  ,0         ,
-12,Cigarettes                     ,0         ,
-17,Fertilizers                    ,0         ,
-27,Finance                        ,0         ,
-29,FInancial Services             ,0         ,
+Id,Sector,Applicable,Weightage
+26,Auto Ancillaries,0,
+34,Automobile,0,
+18,Bearings,0,
+15,Cement,0,
+12,Cigarettes,0,
+13,Consumer Good,0,
+32,Diversified,0,
+5,Engineering/Design/Construction,0,
+17,Fertilizers,0,
+27,Finance,0,
+29,FInancial Services,0,
+25,General Infrastructure,0,
+22,Home appliance,0,
+24,Hotels,0,
+19,Industrial Equipments,0,
+16,Leather Products,0,
+7,LPG or CNG,0,
+33,Media,0,
+3,Mining and Minerals,0,
+28,NBFC,0,
+9,Personal Care,0,
+6,Pestcide or Chemicals,0,
+11,Pharmaceuticals,0,
+14,Plastic Products,0,
+21,Sanitory ware,0,
+20,Tea and Coffee,0,
+30,Telecommunications,0,
+23,Refineries and Marketing,1,13
+35,Asset Management,1,11
+1,Banks,1,20
+31,Insurance,1,15
+10,Paints,1,11
+4,Retailing,1,10
+2,Software,1,12
+8,Steel,1,8

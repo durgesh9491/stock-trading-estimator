@@ -42,5 +42,5 @@ baseHttpClient:
 nseDataScrapper:
   baseUrl: "https://www.nseindia.com/"
   latestStockPriceEndPoint: "live_market/dynaContent/live_watch/get_quote/GetQuote.jsp?symbol="
-  dataFileBasePath: "/Users/durgesh.soni/projects/stock-trading-estimator/src/main/java/stock/trading/data/"
+  dataFileBasePath: "/home/dpc/projects/stockTradingEstimator/src/main/java/stock/trading/data/"
 
