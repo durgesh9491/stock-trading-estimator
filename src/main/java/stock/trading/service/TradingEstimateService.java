@@ -6,7 +6,9 @@ import com.google.common.collect.Sets;
 import stock.trading.bean.SectorDetail;
 import stock.trading.bean.StockDetail;
 import stock.trading.client.NseClient;
-import stock.trading.constant.FilePath;
+import stock.trading.config.AppConfig;
+import stock.trading.config.NseClientConfig;
+import stock.trading.constant.FileName;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -25,6 +27,12 @@ class TradingEstimateService {
     private NseClient nseClient;
 
     private BufferedReader reader;
+    private NseClientConfig config;
+
+    @Inject
+    TradingEstimateService(AppConfig appConfig) {
+        this.config = appConfig.getNseClientConfig();
+    }
 
     double calculateTradingAmount(Set<SectorDetail> targetSectorDetails, Map<Integer, Set<StockDetail>> sectorToStocksMap) {
         System.out.println("\n\n-------------- Sector wise target trading amount --------------\n");
@@ -71,7 +79,7 @@ class TradingEstimateService {
     Set<SectorDetail> getTargetSectorDetails() throws IOException {
         Set<SectorDetail> sectorDetails = Sets.newHashSet();
         String targetSector = "";
-        try (FileReader fileReader = new FileReader(FilePath.nseTargetSectorsFile.getValue())) {
+        try (FileReader fileReader = new FileReader(config.getDataFileBasePath() + FileName.nseTargetSectorsFile.getValue())) {
             reader = new BufferedReader(fileReader);
             String line = "";
             String cvsSplitBy = ",";
@@ -94,7 +102,7 @@ class TradingEstimateService {
     Set<StockDetail> getTargetStockDetails() throws IOException {
         Set<StockDetail> stockDetails = Sets.newHashSet();
         String targetStock = "";
-        try (FileReader fileReader = new FileReader(FilePath.nseTargetStocksFile.getValue())) {
+        try (FileReader fileReader = new FileReader(config.getDataFileBasePath() + FileName.nseTargetStocksFile.getValue())) {
             reader = new BufferedReader(fileReader);
             String line = "";
             String cvsSplitBy = ",";
