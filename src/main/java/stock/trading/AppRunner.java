@@ -40,12 +40,8 @@ public class AppRunner extends Application<AppConfig> {
     }
 
     private void start() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your capital : ");
-        double totalCapital = scanner.nextDouble();
-
         StockTradingEngine tradingEngine = getInjector().getInstance(StockTradingEngine.class);
-        tradingEngine.run(totalCapital);
+        tradingEngine.run();
     }
 
     private void initializeGuice(AppConfig appConfig, Environment environment) {

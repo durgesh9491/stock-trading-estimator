@@ -1,78 +1,78 @@
-Stock                          ,Name      ,Sector,Applicable,Allocation
-Atul Limited                   ,ATUL      ,1     ,1         ,5
-Axis Bank                      ,AXISBANK  ,1     ,1         ,10
-City Union Bank                ,CUB       ,1     ,1         ,5
-Federal Bank                   ,FEDERALBNK,1     ,0         ,
-HDFC Bank                      ,HDFCBANK  ,1     ,1         ,20
-ICICI Bank                     ,ICICIBANK ,1     ,1         ,30
-IDFC First Bank                ,IDFCFIRSTB,1     ,0         ,
-Kotak Mahindra Bank            ,KOTAKBANK ,1     ,1         ,20
-SBI                            ,SBIN      ,1     ,1         ,10
-Yes Bank                       ,YESBANK   ,1     ,0         ,
-HCL Technologies               ,HCLTECH   ,2     ,1         ,15
-Infosys                        ,INFY      ,2     ,1         ,15
-Larsen and Tubro Infotech      ,LTI       ,2     ,1         ,12
-Info Edge Limited              ,NAUKRI    ,2     ,1         ,25
-NIIT Technologies              ,NIITTECH  ,2     ,1         ,10
-Sonata Software                ,SONATSOFTW,2     ,1         ,10
-TCS                            ,TCS       ,2     ,1         ,13
-Bharat Petroleum               ,BPCL      ,3     ,1         ,30
-Coal India                     ,COALINDIA ,3     ,1         ,25
-Vedanta                        ,VEDL      ,3     ,1         ,45
-Avenue Supermarts              ,DMART     ,4     ,1         ,60
-Trent                          ,TRENT     ,4     ,1         ,40
-Larsen and Tubro               ,LT        ,5     ,1         ,100
-Aarti Industries               ,AARTIIND  ,6     ,1         ,35
-PI Industries                  ,PIDILITIND,6     ,1         ,25
-Tata Chemicals                 ,TATACHEM  ,6     ,1         ,20
-Coromandel International       ,COROMANDEL,6     ,1         ,20
-Indraprastha Gas               ,IGL       ,7     ,1         ,100
-Jindal Steel and Power         ,JINDALSTEL,8     ,1         ,70
-Steel Authority of India       ,SAIL      ,8     ,1         ,30
-Asian Paints                   ,ASIANPAINT,10    ,1         ,30
-Berger Paints                  ,BERGEPAINT,10    ,1         ,40
-Kansai Nerolac Paints          ,KANSAINER ,10    ,1         ,30
-Divis Laboratories             ,DIVISLAB  ,11    ,1         ,60
-Torrent Pharmaceuticals        ,TORNTPHARM,11    ,1         ,40
-ITC                            ,ITC       ,13    ,1         ,20
-Emami Limited                  ,EMAMILTD  ,13    ,1         ,30
-Jubilant Foodworks             ,JUBILANT  ,13    ,1         ,50
-Marico                         ,MARICO    ,13    ,0         ,
-Astral Polytech                ,ASTRAL    ,14    ,1         ,40
-Supreme Industries             ,SUPREMEIND,14    ,1         ,60
-JK Cements                     ,JKCEMENT  ,15    ,1         ,40
-Ramco Cements                  ,RAMCOCEM  ,15    ,1         ,35
-JK Lakshmi Cements             ,JKLAKSHMI ,15    ,1         ,25
-Bata India                     ,BATAINDIA ,16    ,1         ,100
-Schaeffler India               ,SCHAEFFLER,18    ,1         ,100
-Thermax                        ,THERMAX   ,19    ,1         ,100
-Tata Glabal Beverages          ,TATAGLOBAL,20    ,1         ,100
-Kajaria Ceramics               ,KAJARIACER,21    ,1         ,100
-Voltas Limited                 ,VOLTAS    ,22    ,1         ,50
-Whirlpool Of India             ,WHIRLPOOL ,22    ,1         ,50
-Reliance Industries            ,RELIANCE  ,23    ,1         ,100
-The Indian Hotels Co. Ltd.     ,INDHOTEL  ,24    ,1         ,100
-Adani Power Ltd                ,ADANIPOWER,25    ,0         ,
-Havells                        ,HAVELLS   ,25    ,1         ,30
-Siemens                        ,SIEMENS   ,25    ,1         ,40
-Apollo Hospitals               ,APOLLOHOSP,25    ,1         ,30
-Balkrishna Industries          ,BALKRISIND,26    ,1         ,70
-Apollo Tyres                   ,APOLLOTYRE,26    ,1         ,30
-HDFC                           ,HDFC      ,28    ,1         ,40
-Bajaj Finance                  ,BAJFINANCE,28    ,1         ,60
-Dewan Housing Finance Co Ltd.  ,DHFL      ,28    ,0         ,
-Indiabulls Housing Finance     ,IBULHSGFIN,28    ,0         ,
-Ujjivan Small Finance Bank     ,UJJIVANSFB,28    ,0         ,
-Bharti Airtel                  ,BHARTIARTL,30    ,1         ,100
-Vodafone Idea                  ,IDEA      ,30    ,0         ,
-ICICI Lombard General Insurance,ICICIGI   ,31    ,1         ,25
-SBI Life Insurance             ,SBILIFE   ,31    ,1         ,50
-HDFC life                      ,HDFCLIFE  ,31    ,1         ,25
-Hindustan Uniliver             ,HINDUNILVR,32    ,1         ,100
-Reliance Capital               ,RELCAPITAL,32    ,0         ,
-Zee Entertainment Enterprises  ,ZEEL      ,33    ,0         ,
-Ashok Leyland Ltd              ,ASHOKLEY  ,34    ,0         ,
-Mahindra and Mahindra          ,M%26M     ,34    ,1         ,20
-Escorts India                  ,ESCORTS   ,34    ,1         ,60
-TVS Motors                     ,TVSMOTOR  ,34    ,1         ,20
-HDFC AMC                       ,HDFCAMC   ,35    ,1         ,100
+Stock,Name,Sector,Applicable,Allocation
+Atul Limited,ATUL,1,0,0
+Axis Bank,AXISBANK,1,1,17
+City Union Bank,CUB,1,1,7
+Federal Bank,FEDERALBNK,1,0,
+HDFC Bank,HDFCBANK,1,1,17
+ICICI Bank,ICICIBANK,1,1,26
+IDFC First Bank,IDFCFIRSTB,1,0,
+Kotak Mahindra Bank,KOTAKBANK,1,1,25
+SBI,SBIN,1,1,8
+Yes Bank,YESBANK,1,0,
+HCL Technologies,HCLTECH,2,1,15
+Infosys,INFY,2,1,15
+Larsen and Tubro Infotech,LTI,2,1,12
+Info Edge Limited ,NAUKRI,2,1,25
+NIIT Technologies,NIITTECH,2,1,10
+Sonata Software,SONATSOFTW,2,1,10
+TCS,TCS,2,1,13
+Bharat Petroleum,BPCL,3,1,30
+Coal India,COALINDIA,3,1,25
+Vedanta,VEDL,3,1,45
+Avenue Supermarts,DMART,4,1,60
+Trent,TRENT,4,1,40
+Larsen and Tubro,LT,5,1,100
+Aarti Industries,AARTIIND,6,1,35
+PI Industries,PIDILITIND,6,1,25
+Tata Chemicals,TATACHEM,6,1,20
+Coromandel International,COROMANDEL,6,1,20
+Indraprastha Gas,IGL,7,1,100
+Jindal Steel and Power,JINDALSTEL,8,1,70
+Steel Authority of India,SAIL,8,1,30
+Asian Paints,ASIANPAINT,10,1,30
+Berger Paints,BERGEPAINT,10,1,40
+Kansai Nerolac Paints,KANSAINER,10,1,30
+Divis Laboratories,DIVISLAB,11,1,60
+Torrent Pharmaceuticals,TORNTPHARM,11,1,40
+ITC,ITC,13,1,20
+Emami Limited,EMAMILTD,13,1,30
+Jubilant Foodworks,JUBILANT,13,1,50
+Marico,MARICO,13,0,
+Astral Polytech,ASTRAL,14,1,40
+Supreme Industries,SUPREMEIND,14,1,60
+JK Cements,JKCEMENT,15,1,40
+Ramco Cements,RAMCOCEM,15,1,35
+JK Lakshmi Cements,JKLAKSHMI,15,1,25
+Bata India,BATAINDIA,16,1,100
+Schaeffler India,SCHAEFFLER,18,1,100
+Thermax,THERMAX,19,1,100
+Tata Glabal Beverages,TATAGLOBAL,20,1,100
+Kajaria Ceramics,KAJARIACER,21,1,100
+Voltas Limited,VOLTAS,22,1,50
+Whirlpool Of India,WHIRLPOOL,22,1,50
+Reliance Industries,RELIANCE,23,1,100
+The Indian Hotels Co. Ltd.,INDHOTEL,24,1,100
+Adani Power Ltd,ADANIPOWER,25,0,
+Havells,HAVELLS,25,1,30
+Siemens,SIEMENS,25,1,40
+Apollo Hospitals,APOLLOHOSP,25,1,30
+Balkrishna Industries,BALKRISIND,26,1,70
+Apollo Tyres,APOLLOTYRE,26,1,30
+HDFC ,HDFC,28,1,40
+Bajaj Finance,BAJFINANCE,28,1,60
+Dewan Housing Finance Co Ltd.,DHFL,28,0,
+Indiabulls Housing Finance,IBULHSGFIN,28,0,
+Ujjivan Small Finance Bank,UJJIVANSFB,28,0,
+Bharti Airtel,BHARTIARTL,30,1,100
+Vodafone Idea,IDEA,30,0,
+ICICI Lombard General Insurance,ICICIGI,31,1,25
+SBI Life Insurance ,SBILIFE,31,1,50
+HDFC life,HDFCLIFE,31,1,25
+Hindustan Uniliver,HINDUNILVR,32,1,100
+Reliance Capital,RELCAPITAL,32,0,
+Zee Entertainment Enterprises,ZEEL,33,0,
+Ashok Leyland Ltd,ASHOKLEY,34,0,
+Mahindra and Mahindra,M%26M,34,1,20
+Escorts India,ESCORTS,34,1,60
+TVS Motors,TVSMOTOR,34,1,20
+HDFC AMC,HDFCAMC,35,1,100
