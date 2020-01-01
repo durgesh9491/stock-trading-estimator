@@ -1,13 +1,13 @@
 Stock,Name,Sector,Applicable,Allocation
-Atul Limited,ATUL,1,1,5
-Axis Bank,AXISBANK,1,1,10
-City Union Bank,CUB,1,1,5
+Atul Limited,ATUL,1,0,0
+Axis Bank,AXISBANK,1,1,17
+City Union Bank,CUB,1,1,7
 Federal Bank,FEDERALBNK,1,0,
-HDFC Bank,HDFCBANK,1,1,20
-ICICI Bank,ICICIBANK,1,1,30
+HDFC Bank,HDFCBANK,1,1,17
+ICICI Bank,ICICIBANK,1,1,26
 IDFC First Bank,IDFCFIRSTB,1,0,
-Kotak Mahindra Bank,KOTAKBANK,1,1,20
-SBI,SBIN,1,1,10
+Kotak Mahindra Bank,KOTAKBANK,1,1,25
+SBI,SBIN,1,1,8
 Yes Bank,YESBANK,1,0,
 HCL Technologies,HCLTECH,2,1,15
 Infosys,INFY,2,1,15

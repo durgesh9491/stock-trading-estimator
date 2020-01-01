@@ -1,36 +1,36 @@
 Id,Sector,Applicable,Weightage
-26,Auto Ancillaries,0,
-34,Automobile,0,
-18,Bearings,0,
-15,Cement,0,
+1,Banks,1,70
+2,Software,0,0
+3,Mining and Minerals,0,
+4,Retailing,0,0
+5,Engineering/Design/Construction,0,
+6,Pestcide or Chemicals,0,
+7,LPG or CNG,0,
+8,Steel,0,0
+9,Personal Care,0,
+10,Paints,0,0
+11,Pharmaceuticals,0,
 12,Cigarettes,0,
 13,Consumer Good,0,
-32,Diversified,0,
-5,Engineering/Design/Construction,0,
-17,Fertilizers,0,
-27,Finance,0,
-29,FInancial Services,0,
-25,General Infrastructure,0,
-22,Home appliance,0,
-24,Hotels,0,
-19,Industrial Equipments,0,
-16,Leather Products,0,
-7,LPG or CNG,0,
-33,Media,0,
-3,Mining and Minerals,0,
-28,NBFC,0,
-9,Personal Care,0,
-6,Pestcide or Chemicals,0,
-11,Pharmaceuticals,0,
 14,Plastic Products,0,
-21,Sanitory ware,0,
+15,Cement,0,
+16,Leather Products,0,
+17,Fertilizers,0,
+18,Bearings,0,
+19,Industrial Equipments,0,
 20,Tea and Coffee,0,
+21,Sanitory ware,0,
+22,Home appliance,0,
+23,Refineries and Marketing,1,30
+24,Hotels,0,
+25,General Infrastructure,0,
+26,Auto Ancillaries,0,
+27,Finance,0,
+28,NBFC,0,
+29,FInancial Services,0,
 30,Telecommunications,0,
-23,Refineries and Marketing,1,13
-35,Asset Management,1,11
-1,Banks,1,20
-31,Insurance,1,15
-10,Paints,1,11
-4,Retailing,1,10
-2,Software,1,12
-8,Steel,1,8
+31,Insurance,0,0
+32,Diversified,0,
+33,Media,0,
+34,Automobile,0,
+35,Asset Management,0,0

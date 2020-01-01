@@ -65,7 +65,7 @@ class TradingEstimateService {
                 System.out.println(String.format("**** No target stocks found for sector : %s", sectorDetail.getName()));
                 return;
             }
-
+            stockDetails = stockDetails.stream().collect(Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(StockDetail::getDisplayName))));
             stockDetails.forEach(stock -> {
                 double stockWeight = stock.getWeight();
                 int units = (int) ((totalCapital * sectorWeight * stockWeight) / stock.getPrice());
