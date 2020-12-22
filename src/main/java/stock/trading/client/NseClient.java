@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class NseClient extends BaseHttpClient {
 
-    private NseClientConfig config;
+    private final NseClientConfig config;
 
     @Inject
     public NseClient(AppConfig appConfig) {

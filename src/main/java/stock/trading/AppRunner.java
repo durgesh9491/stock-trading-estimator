@@ -8,12 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import stock.trading.config.AppConfig;
 import stock.trading.service.StockTradingEngine;
 
-import java.util.Scanner;
-
 @Slf4j
 public class AppRunner extends Application<AppConfig> {
-    private static Injector injector;
     private static final String appName = "Stock Trading Estimator (STE)";
+    private static Injector injector;
 
     public static void main(String[] args) {
         try {
@@ -22,6 +20,10 @@ public class AppRunner extends Application<AppConfig> {
             log.error("Unable to start : {}, exiting!", AppRunner.class.getSimpleName(), ex);
             ex.printStackTrace();
         }
+    }
+
+    public static Injector getInjector() {
+        return injector;
     }
 
     @Override
@@ -33,10 +35,6 @@ public class AppRunner extends Application<AppConfig> {
     @Override
     public String getName() {
         return appName;
-    }
-
-    public static Injector getInjector() {
-        return injector;
     }
 
     private void start() {

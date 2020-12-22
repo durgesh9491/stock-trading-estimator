@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class StockTradingEngine {
     @Inject
     private TradingEstimateService estimateService;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public void run() {
         System.out.println("Please enter number of trials");

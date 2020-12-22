@@ -9,5 +9,5 @@ public enum FileName {
     nseTargetStocksFile("NSE-Stocks.csv"),
     nseTargetSectorsFile("NSE-Sector.csv");
 
-    private String value;
+    private final String value;
 }

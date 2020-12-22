@@ -27,7 +27,7 @@ class TradingEstimateService {
     private NseClient nseClient;
 
     private BufferedReader reader;
-    private NseClientConfig config;
+    private final NseClientConfig config;
 
     @Inject
     TradingEstimateService(AppConfig appConfig) {
